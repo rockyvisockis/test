@@ -20,8 +20,6 @@ jobs:
 
           inputs:
             - name: rokas-test
-          outputs:
-            - name: hello-world
-
+            
           run:
             path: rokas-test/scripts/helloworld.sh
