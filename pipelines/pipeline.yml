@@ -3,8 +3,8 @@ resources:
   - name: rokas-test
     type: git
     source:
-      uri: git@github.com:rockyvisockis/test.git
-      branch: main
+      uri: https://github.com/rockyvisockis/test.git
+      branch: dev
 
 jobs:
   - name: shell-job
