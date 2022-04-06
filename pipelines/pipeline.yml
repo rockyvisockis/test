@@ -1,0 +1,27 @@
+---
+resources:
+  - name: rokas-test
+    type: git
+    source:
+      uri: https://github.com/rockyvisockis/test.git
+      branch: main
+
+jobs:
+  - name: shell-job
+    public: true
+    plan:
+      - get: rokas-test
+      - task: run-script
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: {repository: ubuntu}
+
+          inputs:
+            - name: rokas-test
+          outputs:
+            - name: hello-world
+
+          run:
+            path: rokas-test/scripts/helloworld.sh
