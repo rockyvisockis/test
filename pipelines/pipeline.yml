@@ -23,7 +23,7 @@ jobs:
 
           run:
             params: 
-              concourse_user_secret: ((concourse_local_password))
+              concourse_user_secret: ((/concourse/cec/concourse_local_password))
             path: rokas-test/scripts/helloworld.sh
 
 
