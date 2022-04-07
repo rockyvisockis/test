@@ -8,23 +8,7 @@ resources:
 
 jobs:
   - name: shell-job
-    public: true
-    plan:
-      - get: rokas-test
-      - task: run-script
-        config:
-          platform: linux
-          image_resource:
-            type: docker-image
-            source: {repository: ubuntu}
-
-          inputs:
-            - name: rokas-test
-
-          run:
-            params: 
-              concourse_user_secret: ((/concourse/cec/concourse_local_password))
-            path: rokas-test/scripts/helloworld.sh
-
-
-
+    - task: fly_commands
+      file: test/tasks/workers.yml
+      params: 
+        concourse_user_secret: ((concourse_local_password))
