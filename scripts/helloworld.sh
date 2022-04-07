@@ -15,6 +15,4 @@ curl $DOWLOADLINK -G -d 'arch=amd64' -d 'platform=linux' -o 'fly'
 mv fly /usr/local/bin
 chmod 0755 /usr/local/bin/fly
 
-/usr/local/bin/fly --target="main" login \
-    --concourse-url $CONCOURSEURL \
-    --username "concourse" --password "$concourse_user_secret" > "fly_login.txt"
+
