@@ -16,4 +16,4 @@ curl $DOWLOADLINK -G -d 'arch=amd64' -d 'platform=linux' -o 'fly'
 mv fly /usr/local/bin
 chmod 0755 /usr/local/bin/fly
 
-fly --version
+fly -t cec-training workers
