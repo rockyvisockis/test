@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 apt-get update > /dev/null
 DEBIAN_FRONTEND=noninteractive apt-get install apt-utils -y > /dev/null
