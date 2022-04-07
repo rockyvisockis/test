@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt-get update > /dev/null
-DEBIAN_FRONTEND=noninteractive apt-get install dialog apt-utils -y > /dev/null
+DEBIAN_FRONTEND=noninteractive apt-get install apt-utils -y > /dev/null
 DEBIAN_FRONTEND=noninteractive apt-get install -y curl > /dev/null
 apt-get -qq -y install jq > /dev/null
 
