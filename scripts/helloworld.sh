@@ -1,9 +1,9 @@
 #!/bin/bash
 
-apt-get update > /dev/null
-DEBIAN_FRONTEND=noninteractive apt-get install apt-utils -y > /dev/null
-DEBIAN_FRONTEND=noninteractive apt-get install -y curl > /dev/null
-apt-get -qq -y install jq > /dev/null
+apt-get update 
+DEBIAN_FRONTEND=noninteractive apt-get install apt-utils -y 
+DEBIAN_FRONTEND=noninteractive apt-get install -y curl 
+apt-get -qq -y install jq 
 
 
 export CONCOURSEURL="https://concourse.at.sky"
