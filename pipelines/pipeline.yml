@@ -21,10 +21,9 @@ jobs:
           inputs:
             - name: rokas-test
 
-          params: 
-            concourse_user_secret: ((concourse_local_password))
-            
           run:
+            params: 
+              concourse_user_secret: ((concourse_local_password))
             path: rokas-test/scripts/helloworld.sh
 
 
