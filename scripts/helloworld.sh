@@ -17,7 +17,7 @@ chmod 0755 /usr/local/bin/fly
 
 fly -t cec-training login -c $CONCOURSEURL \
     --username "concourse" \
-    --password "$concourse_user_secret" > "fly_login.txt"
+    --password "$concourse_user_secret" > fly_login.txt
 
 case `grep -F "target saved" "fly_login.txt" >/dev/null; echo $?` in
   0)
