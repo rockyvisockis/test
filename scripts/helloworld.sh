@@ -19,5 +19,6 @@ touch ~/.flyrc
 
 fly -t cec-training login -c $CONCOURSEURL \
     --username "concourse" \
-    --password "$concourse_user_secet" 
+    --password "$concourse_user_secet" > login.txt
 
+cat login.txt
