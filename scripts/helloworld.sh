@@ -25,4 +25,5 @@ AUTH2="$(curl -b ${COOKIE_FILE} -c ${COOKIE_FILE} -s -o /dev/null -L "${CONCOURS
 curl -o /dev/null -s -b ${COOKIE_FILE} -c ${COOKIE_FILE} -L --data-urlencode "login=${CONCOURSE_USER}" \
     --data-urlencode "password=${CONCOURSE_PASS}" "${CONCOURSE_URL}${AUTH2}"
 OAUTH_TOKEN=$(cat ${COOKIE_FILE} | grep 'skymarshal_auth' | grep -o 'Bearer .*$' | tr -d '"')
-echo Bearer $OAUTH_TOKEN | $FLY_BIN -t $CONCOURSE_TARGET login -c $CONCOURSE_URL -n main
+echo "bearer $OAUTH_TOKEN | $FLY_BIN -t $CONCOURSE_TARGET login -c $CONCOURSE_URL -n main"
+
