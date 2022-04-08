@@ -16,8 +16,27 @@ mv fly /usr/local/bin
 chmod 0755 /usr/local/bin/fly
 
 
-export TOKENURL=$(fly -t cec-training login -c $CONCOURSEURL \
-    --username "concourse" \
-    --password "$concourse_user_secet")
+if [ 1 == 1 ]; then
+     fly -t cec-training login -c $CONCOURSEURL \
+        --username "concourse" \
+        --password "$concourse_user_secet" > "fly_login.txt" 
+fi
 
-printenv TOKENURL 
+case `grep -F "target saved" "fly_login.txt" >/dev/null; echo $?` in
+  0)
+    echo "Fly login ran successfully"
+    cat "fly_login.txt"
+    ;;
+  1)
+    echo "ERROR: Issued detected with fly login"
+    cat "fly_login.txt"
+    exit 1
+    ;;
+  *)
+    echo "ERRROR: Some error occurred logging into fly"
+    cat "fly_login.txt"
+    exit 1
+    ;;
+esac
+
+
