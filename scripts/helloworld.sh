@@ -15,5 +15,9 @@ curl $DOWLOADLINK -G -d 'arch=amd64' -d 'platform=linux' -o 'fly'
 mv fly /usr/local/bin
 chmod 0755 /usr/local/bin/fly
 
+touch ~/.flyrc
 
-cat ~/.flyrc
+fly -t cec-training login -c $CONCOURSEURL \
+    --username "concourse" \
+    --password "$concourse_user_secet" 
+
