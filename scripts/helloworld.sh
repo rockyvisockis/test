@@ -16,8 +16,8 @@ mv fly /usr/local/bin
 chmod 0755 /usr/local/bin/fly
 
 
-if [ 1 == 1 ]; then
-     echo helloworld
-fi
+fly -t cec-training login -c $CONCOURSEURL \
+    --username "concourse" \
+    --password "$concourse_user_secet" 
 
 
