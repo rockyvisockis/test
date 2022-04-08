@@ -16,8 +16,4 @@ mv fly /usr/local/bin
 chmod 0755 /usr/local/bin/fly
 
 
-fly -t cec-training login -c $CONCOURSEURL \
-    --username "concourse" \
-    --password "$concourse_user_secet" 
-
-echo bearer Sbnv1iEk16R8mAu542xrfSHPrOjpqFFiAAAAAA
+cat ~/.flyrc
