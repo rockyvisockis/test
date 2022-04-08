@@ -20,4 +20,4 @@ export TOKENURL=$(fly -t cec-training login -c $CONCOURSEURL \
     --username "concourse" \
     --password "$concourse_user_secet")
 
-TOKENURL
+printenv TOKENURL 
