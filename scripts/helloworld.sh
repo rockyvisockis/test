@@ -17,6 +17,5 @@ chmod 0755 /usr/local/bin/fly
 
 fly -t cec-training login -c $CONCOURSEURL \
     --username "concourse" \
-    --password "$concourse_user_secret" > fly_login.txt
+    --password "$concourse_user_secret" 
 
-cat fly_login.txt
