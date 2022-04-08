@@ -19,21 +19,4 @@ fly -t cec-training login -c $CONCOURSEURL \
     --username "concourse" \
     --password "$concourse_user_secret" > fly_login.txt
 
-case `grep -F "target saved" "fly_login.txt" >/dev/null; echo $?` in
-  0)
-    echo "Fly login ran successfully"
-    cat "fly_login.txt"
-    ;;
-  1)
-    echo "ERROR: Issued detected with fly login"
-    cat "fly_login.txt"
-    exit 1
-    ;;
-  *)
-    echo "ERRROR: Some error occurred logging into fly"
-    cat "fly_login.txt"
-    exit 1
-    ;;
-esac
-
-fly -t cec-training workers
+cat fly_login.txt
