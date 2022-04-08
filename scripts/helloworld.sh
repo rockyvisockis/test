@@ -9,7 +9,7 @@ apt-get -qq -y install jq > /dev/null
 CONCOURSE_URL="https://concourse.at.sky"
 CONCOURSE_USER="concourse"
 CONCOURSE_PASS="$concourse_user_secret"
-CONCOURSE_TARGET="automation"
+CONCOURSE_TARGET="cec-training"
 FLY_ENDPOINT="/api/v1/cli?arch=amd64&platform=linux"
 AUTH_ENDPOINT="/sky/login"
 
