@@ -19,4 +19,5 @@ fly -t cec-training login -c $CONCOURSEURL \
     --username "concourse" \
     --password "$concourse_user_secet" > "fly_login.txt"
 
-grep -F "target saved" "fly_login.txt" >/dev/null
+
+
