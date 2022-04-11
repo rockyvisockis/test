@@ -20,9 +20,9 @@ chmod 0755 /usr/local/bin/fly
     --username "concourse" \
     --password "$concourse_user_secret" 
 
-fly -t cec workers --json > workers.json
+fly -t main workers --json > workers.json
 
-# jq '.[] | select(.state == "running" | .name' workers.json
+jq '.[] | select(.state == "running" | .name' workers.json
 
 
 
