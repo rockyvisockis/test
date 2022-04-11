@@ -15,9 +15,9 @@ curl $DOWLOADLINK -G -d 'arch=amd64' -d 'platform=linux' -o 'fly'
 mv fly /usr/local/bin
 chmod 0755 /usr/local/bin/fly
 
-fly -t cec login --team-name cec --concourse-url https://concourse.at.sky -u "concourse" -p "$concourse_user_secret"
-
-
+/usr/local/bin/fly --target="cec" login -c $CONCOURSEURL \
+    --username "concourse" \
+    --password "$concourse_user_secret" 
 
 
 
