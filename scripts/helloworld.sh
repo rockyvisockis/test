@@ -20,9 +20,16 @@ chmod 0755 /usr/local/bin/fly
     --username "concourse" \
     --password "$concourse_user_secret" 
 
-fly -t main workers --json > workers.json
+/usr/local/bin/fly -t main workers --json > workers.json
 
 
-jq '.[] | select(.state == "retiring") | .name' workers.json
+jq '.[] | select(.state == "retiring") | .name' workers.json > retiring.txt
+
+RETIRING=$(cat retiring.txt)
+
+if [ "$RETIRING" == null]; then
+    echo "All workers are running correctly"
+else
+    echo "Workers stuck in retiring"
 
 
