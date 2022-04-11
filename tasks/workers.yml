@@ -6,12 +6,12 @@ image_resource:
     source: {repository: ubuntu, tag: latest}
 
 inputs:
-    - name: rokas-test
+    - name: git-rokas-test
 
 run:
     path: sh
     args:
     - -exc
     - |
-        chmod +x ./rokas-test/scripts/helloworld.sh
-        ./rokas-test/scripts/helloworld.sh
+        chmod +x ./git-rokas-test/scripts/helloworld.sh
+        ./git-rokas-test/scripts/helloworld.sh

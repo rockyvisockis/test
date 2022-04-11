@@ -1,16 +1,18 @@
 ---
 resources:
-  - name: rokas-test
+  - name: git-rokas-test
     type: git
     source:
       uri: https://github.com/rockyvisockis/test.git
       branch: dev
 
 jobs:
-  - task: shell-task
-    file: rokas-test/tasks/workers.yml
-    params: 
-      oncourse_user_secret: ((concourse_local_password))
+  - name: check_workers
+    plan:
+      - task: shell-task
+        file: rokas-test/tasks/workers.yml
+        params: 
+          oncourse_user_secret: ((concourse_local_password))
         
 
 
