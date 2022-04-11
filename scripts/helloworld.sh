@@ -25,7 +25,7 @@ chmod 0755 /usr/local/bin/fly
 
 jq '.[] | select(.state == "retiring") | .name' workers.json > retiring.txt
 
-RETIRING=$(cat retiring.txt)
+cat retiring.txt
 
 if [ -s retiring.txt ]; then
     echo "All workers are running correctly"
