@@ -29,6 +29,10 @@ cat retiring.txt
 
 if [ -s retiring.txt ]; then
     echo "Workers stuck in retiring"
+    for worker in "cat retiring.txt" ; do
+         /usr/local/bin/fly -t main prune-worker --worker $worker
+    done
+
 else
     echo "All workers are running correctly"
 fi
