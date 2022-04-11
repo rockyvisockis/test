@@ -31,5 +31,5 @@ if [ "$RETIRING" == null]; then
     echo "All workers are running correctly"
 else
     echo "Workers stuck in retiring"
-
+fi
 
