@@ -5,11 +5,13 @@ image_resource:
     type: docker-image
     source: {repository: ubuntu, tag: latest}
 
-params: 
-  concourse_user_secret: ((concourse_local_password))
-inputs: 
-- name: rokas-test
+inputs:
+    - name: rokas-test
 
 run:
-  path: rokas-test/scripts/helloworld.sh
-
+    path: sh
+    args:
+    - -exc
+    - |
+        chmod +x ./rokas-test/scripts/helloworld.sh
+        ./rokas-test/scripts/helloworld.sh

@@ -7,26 +7,10 @@ resources:
       branch: dev
 
 jobs:
-  - name: shell-job
-    public: true
-    plan:
-      - get: rokas-test
-      - task: run-script
+  - task: shell-task
+    file: rokas-test/tasks/workers.yml
+    params: 
+      oncourse_user_secret: ((concourse_local_password))
         
-        config:
-          platform: linux
-          image_resource:
-            type: docker-image
-            source: {repository: ubuntu}
-
-          
-          inputs:
-            - name: rokas-test
-          
-          run:
-            params: 
-              concourse_user_secret: ((concourse_local_password))
-            path: rokas-test/scripts/helloworld.sh
-
 
 
