@@ -27,7 +27,7 @@ jq '.[] | select(.state == "retiring") | .name' workers.json > retiring.txt
 
 RETIRING=$(cat retiring.txt)
 
-if [ "$RETIRING" == null ]; then
+if [ -s retiring.txt ]; then
     echo "All workers are running correctly"
 else
     echo "Workers stuck in retiring"
