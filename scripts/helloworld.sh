@@ -22,7 +22,7 @@ chmod 0755 /usr/local/bin/fly
 
 fly -t cec workers --json > workers.json
 
-jq '.[] | select(.state == "running" | .name' workers.json
+# jq '.[] | select(.state == "running" | .name' workers.json
 
 
 
