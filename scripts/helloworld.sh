@@ -3,6 +3,7 @@
 apt-get update > /dev/null
 DEBIAN_FRONTEND=noninteractive apt-get install apt-utils -y > /dev/null
 DEBIAN_FRONTEND=noninteractive apt-get install -y curl > /dev/null
+DEBIAN_FRONTEND=noninteractive apt-get install -y jq > /dev/null
 apt-get -qq -y install jq > /dev/null
 
 # Use API?
@@ -18,6 +19,10 @@ chmod 0755 /usr/local/bin/fly
 /usr/local/bin/fly -t main login --team-name cec -c $CONCOURSEURL \
     --username "concourse" \
     --password "$concourse_user_secret" 
+
+fly -t cec workers --json > workers.json
+
+jq '.[] | select(.state == "running" | .name'
 
 
 
