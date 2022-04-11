@@ -9,8 +9,9 @@ resources:
 jobs:
   - name: check_workers
     plan:
+      - get: git-rokas-test
       - task: shell-task
-        file: rokas-test/tasks/workers.yml
+        file: git-rokas-test/tasks/workers.yml
         params: 
           oncourse_user_secret: ((concourse_local_password))
         
