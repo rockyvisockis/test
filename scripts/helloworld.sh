@@ -23,6 +23,6 @@ chmod 0755 /usr/local/bin/fly
 fly -t main workers --json > workers.json
 
 
-jq '.[] | select(.state == "running") | .name' workers.json
+jq '.[] | select(.state == "retiring") | .name' workers.json
 
 
