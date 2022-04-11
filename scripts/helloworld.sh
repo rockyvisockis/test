@@ -34,6 +34,6 @@ if [ -s retiring.txt ]; then
     done
 
 else
-    echo "All workers are running correctly"
+    echo "All workers are running"
 fi
 
