@@ -13,7 +13,7 @@ jobs:
       - task: shell-task
         file: git-rokas-test/tasks/workers.yml
         params: 
-          oncourse_user_secret: ((concourse_local_password))
+          concourse_user_secret: ((concourse_local_password))
         
 
 
