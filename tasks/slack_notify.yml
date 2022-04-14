@@ -16,5 +16,5 @@ run:
     args:
     - -exc
     - |
-        chmod +x ./git-rokas-test/scripts/slack-message.sh
-        ./git-rokas-test/scripts/slack-message.sh
+        chmod +x ./git-rokas-test/scripts/slack_message.sh
+        ./git-rokas-test/scripts/slack_message.sh

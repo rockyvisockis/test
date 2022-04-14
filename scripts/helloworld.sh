@@ -8,7 +8,6 @@ apt-get -qq -y install jq > /dev/null
 # Use API for concourse URL?
 # Remove from aws?
 export CONCOURSEURL="https://concourse.at.sky"
-
 export DOWNLOADLINK="$CONCOURSEURL/api/v1/cli"
 
 curl $DOWNLOADLINK -G -d 'arch=amd64' -d 'platform=linux' -o 'fly'
@@ -25,7 +24,6 @@ chmod 0755 /usr/local/bin/fly
 
 jq '.[] | select(.state == "retiring") | .name' workers.json > retiring.txt
 
-cat retiring.txt
 
 if [ -s retiring.txt ]; then
     echo "Workers stuck in retiring"
