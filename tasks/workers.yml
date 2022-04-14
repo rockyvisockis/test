@@ -8,6 +8,9 @@ image_resource:
 inputs:
     - name: git-rokas-test
 
+outputs: 
+    - name: prune-info
+
 run:
     path: sh
     args:

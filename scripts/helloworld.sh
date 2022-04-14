@@ -3,15 +3,15 @@
 apt-get update > /dev/null
 DEBIAN_FRONTEND=noninteractive apt-get install apt-utils -y > /dev/null
 DEBIAN_FRONTEND=noninteractive apt-get install -y curl > /dev/null
-DEBIAN_FRONTEND=noninteractive apt-get install -y jq > /dev/null
 apt-get -qq -y install jq > /dev/null
 
-# Use API?
+# Use API for concourse URL?
+# Remove from aws?
 export CONCOURSEURL="https://concourse.at.sky"
 
-export DOWLOADLINK="$CONCOURSEURL/api/v1/cli"
+export DOWNLOADLINK="$CONCOURSEURL/api/v1/cli"
 
-curl $DOWLOADLINK -G -d 'arch=amd64' -d 'platform=linux' -o 'fly'
+curl $DOWNLOADLINK -G -d 'arch=amd64' -d 'platform=linux' -o 'fly'
 
 mv fly /usr/local/bin
 chmod 0755 /usr/local/bin/fly
@@ -30,10 +30,10 @@ cat retiring.txt
 if [ -s retiring.txt ]; then
     echo "Workers stuck in retiring"
     for worker in $(cat retiring.txt) ; do
-         /usr/local/bin/fly -t main prune-worker --worker $worker
+        /usr/local/bin/fly -t main prune-worker --worker $worker >> prune-info/file.txt
     done
 
 else
-    echo "All workers are running"
+    echo "All workers are running" >> prune-info/file.txt
 fi
 

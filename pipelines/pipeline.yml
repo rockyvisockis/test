@@ -6,14 +6,25 @@ resources:
       uri: https://github.com/rockyvisockis/test.git
       branch: dev
 
+resources:
+  - name: every-hour
+    type: time
+    icon: clock-outline
+    source:
+      interval: 60m
+
 jobs:
   - name: check_workers
     plan:
+      - get: every-hour
+        trigger: true
       - get: git-rokas-test
       - task: shell-task
         file: git-rokas-test/tasks/workers.yml
         params: 
           concourse_user_secret: ((concourse_local_password))
-        
-
+        on_success: 
+          task: notify
+          file: git-rokas-test/tasks/slack_notify.yml
+      
 
