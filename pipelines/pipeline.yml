@@ -21,7 +21,7 @@ jobs:
         file: git-rokas-test/tasks/workers.yml
         params: 
           concourse_user_secret: ((concourse_local_password))
-      - task: notify
+        on_success: notify
         file: git-rokas-test/tasks/slack_notify.yml
       
 
