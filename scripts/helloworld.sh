@@ -35,6 +35,8 @@ if [ -s retiring.txt ]; then
     echo "hello world!"
 else
     echo "All workers are running" 
-    exit 0
+    exit 1
+    wait 1
+    echo "hello world"
 fi
     
