@@ -33,6 +33,6 @@ if [ -s retiring.txt ]; then
     exit 1
 else
     echo "All workers are running" 
-    exit 1
+    exit 0
 fi
     
