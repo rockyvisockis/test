@@ -1,3 +1,3 @@
 #!/bin/bash
 
-fly -t main workers
+/usr/local/bin/fly -t main workers
