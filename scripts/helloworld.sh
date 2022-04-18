@@ -30,9 +30,11 @@ if [ -s retiring.txt ]; then
     for worker in $(cat retiring.txt) ; do
         /usr/local/bin/fly -t main prune-worker --worker $worker >> prune-info/file.txt
     done
-    exit 0
-else
-    echo "All workers are running" >> prune-info/file.txt
     exit 1
+    wait 1
+    echo "hello world!"
+else
+    echo "All workers are running" 
+    exit 0
 fi
     
