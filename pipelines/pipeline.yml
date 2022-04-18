@@ -1,10 +1,20 @@
 ---
+resource_types:
+  - name: slack-notification
+    type: docker-image
+    source:
+      repository: cfcommunity/slack-notification-resource
+
 resources:
   - name: git-rokas-test
     type: git
     source:
       uri: https://github.com/rockyvisockis/test.git
       branch: dev
+  - name: notify
+    type: slack-notification
+    source:
+      url: ((slack_webhook_concours_aws_sso))
   - name: every-hour
     type: time
     icon: clock-outline
@@ -22,7 +32,11 @@ jobs:
         params: 
           concourse_user_secret: ((concourse_local_password))
         on_failure:
-          task: notify
-          file: git-rokas-test/tasks/slack_notify.yml
+          put: notify
+          params: 
+            text_file: prune-info/file
+            channel: "#uk-cec-concourse-prod"
+          
+
       
 
