@@ -31,12 +31,8 @@ if [ -s retiring.txt ]; then
         /usr/local/bin/fly -t main prune-worker --worker $worker >> prune-info/file.txt
     done
     exit 1
-    wait 1
-    echo "hello world!"
 else
-    echo "All workers are running" 
+    echo "All workers are running" >> prune-info/file.txt
     exit 1
-    wait 1
-    echo "hello world"
 fi
     
