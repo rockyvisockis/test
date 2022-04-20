@@ -1,8 +1,8 @@
 #!/bin/bash
 
 apt-get update > /dev/null
-DEBIAN_FRONTEND=noninteractive apt-get install apt-utils -y > /dev/null
-DEBIAN_FRONTEND=noninteractive apt-get install -y curl > /dev/null
+DEBIAN_FRONTEND=noninteractive apt-get -qq install apt-utils -y > /dev/null
+DEBIAN_FRONTEND=noninteractive apt-get -qq install -y curl > /dev/null
 apt-get -qq -y install jq > /dev/null
 
 
@@ -40,6 +40,6 @@ if [ $(cat file.txt | wc -l) -eq $(grep "pruned" file.txt | wc -l) ]; then
     cat prune-info/file.txt > prune-info/pruned.txt
     exit 0
 else
-    echo "There was an error while prunning workers" > prune-info/pruned.txt
+    echo "There was an error while pruning workers" > prune-info/pruned.txt
     exit 1
 fi
