@@ -30,7 +30,8 @@ if [ -s retiring.txt ]; then
     done
 
 else
-    echo "All workers are running" > prune-info/pruned.txt
+    echo "All workers are running" 
+    touch prune-info/file.txt
     exit 0
 
 fi
