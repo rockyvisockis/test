@@ -6,14 +6,14 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y curl > /dev/null
 apt-get -qq -y install jq > /dev/null
 
 
-export DOWNLOADLINK="$concourseurl/api/v1/cli"
+export DOWNLOADLINK="$concourse_url/api/v1/cli"
 
 curl $DOWNLOADLINK -G -d 'arch=amd64' -d 'platform=linux' -o 'fly'
 
 mv fly /usr/local/bin
 chmod 0755 /usr/local/bin/fly
 
-/usr/local/bin/fly -t main login --team-name cec -c $concourseurl \
+/usr/local/bin/fly -t main login --team-name cec -c $concourse_url \
     --username "concourse" \
     --password "$concourse_user_secret" 
 

@@ -31,23 +31,21 @@ jobs:
         file: git-rokas-test/tasks/workers.yml
         params: 
           concourse_user_secret: ((concourse_local_password))
-          concourseurl: https://concourse.at.sky
+          concourse_url: https://concourse.at.sky
 
         on_success:
           put: notify
           params: 
-            inputs: prune-info
-            text_file: prune-info/pruned
+            text_file: prune-info/pruned.txt
             channel: "#uk-cec-concourse-prod"
-            text: $TEXT_FILE_CONTENT
+            
 
         on_failure:
           put: notify
           params: 
-            inputs: prune-info
-            text_file: prune-info/pruned
+            text_file: prune-info/pruned.txt
             channel: "#uk-cec-concourse-prod"
-            text: $TEXT_FILE_CONTENT
+            
 
       
 
