@@ -4,10 +4,12 @@ apt-get -qq update
 DEBIAN_FRONTEND=noninteractive apt-get -qq install apt-utils -y > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get -qq install -y curl > /dev/null 2>&1
 apt-get -qq install jq -y > /dev/null 2>&1
-apt-get -qq install awscli -y > /dev/null 2>&1
+apt-get  install awscli -y > /dev/null 
 
 
 export DOWNLOADLINK="$concourse_url/api/v1/cli"
+export AWS_ACCESS_KEY_ID="$access_key_id"
+export AWS_SECRET_ACCESS_KEY="$secret_access_key"
 
 curl $DOWNLOADLINK -G -d 'arch=amd64' -d 'platform=linux' -o 'fly'
 
