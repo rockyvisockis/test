@@ -38,12 +38,14 @@ jobs:
           params: 
             text_file: prune-info/pruned
             channel: "#uk-cec-concourse-prod"
+            text: $TEXT_FILE_CONTENT
 
         on_failure:
           put: notify
           params: 
             text_file: prune-info/pruned
             channel: "#uk-cec-concourse-prod"
+            text: $TEXT_FILE_CONTENT
 
       
 

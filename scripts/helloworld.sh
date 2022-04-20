@@ -26,28 +26,19 @@ jq '.[] | select(.state == "retiring") | .name' workers.json > retiring.txt
 if [ -s retiring.txt ]; then
     echo "Workers stuck in 'retiring'"
     for worker in $(cat retiring.txt) ; do
-        /usr/local/bin/fly -t main prune-worker --worker $worker >> file.txt
-        
+        /usr/local/bin/fly -t main prune-worker --worker $worker >> prune-info/file.txt
     done
-    
-    for outcome in $(cat file.txt)
-    do
-
-        case "$outcome" in
-            pruned)
-                echo "Workers have been pruned successfully" >> prune-info/pruned.txt   
-                exit 0
-                ;;
-            
-            *)
-                echo "ERRROR: Some error occurred while prunning workers" >> prune-info/pruned.txt
-                exit 1
-                ;;
-        esac
-    done 
 
 else
     echo "All workers are running" > prune-info/pruned.txt
     exit 0
+
 fi
     
+if [ $(cat file.txt | wc -l) -eq $(grep "pruned" file.txt | wc -l) ]; then
+    cat prune-info/file.txt > prune-info/pruned.txt
+    exit 0
+else
+    echo "There was an error while prunning workers" > prune-info/pruned.txt
+    exit 1
+fi
