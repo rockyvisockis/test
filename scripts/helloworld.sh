@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get update > /dev/null 2>&1
+apt-get -qq update 
 DEBIAN_FRONTEND=noninteractive apt-get -qq install apt-utils -y > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get -qq install -y curl > /dev/null 2>&1
 apt-get -qq install jq -y > /dev/null 2>&1
