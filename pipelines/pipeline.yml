@@ -14,7 +14,7 @@ resources:
   - name: notify
     type: slack-notification
     source:
-      url: ((slack_webhook_concours_aws_sso))
+      url: ((uk-cec-concourse-prod-slack-webhook-url))
   - name: every-hour
     type: time
     icon: clock-outline
@@ -31,12 +31,21 @@ jobs:
         file: git-rokas-test/tasks/workers.yml
         params: 
           concourse_user_secret: ((concourse_local_password))
+          concourseurl: https://concourse.at.sky
+
+        on_success:
+          put: notify
+          params: 
+            text_file: prune-info/pruned
+            channel: "#uk-cec-concourse-prod"
+
         on_failure:
           put: notify
           params: 
-            text_file: prune-info/file
+            text_file: prune-info/pruned
             channel: "#uk-cec-concourse-prod"
-          
+
+      
 
       
 
