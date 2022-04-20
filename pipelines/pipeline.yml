@@ -36,6 +36,7 @@ jobs:
         on_success:
           put: notify
           params: 
+            inputs: prune-info
             text_file: prune-info/pruned
             channel: "#uk-cec-concourse-prod"
             text: $TEXT_FILE_CONTENT
@@ -43,6 +44,7 @@ jobs:
         on_failure:
           put: notify
           params: 
+            inputs: prune-info
             text_file: prune-info/pruned
             channel: "#uk-cec-concourse-prod"
             text: $TEXT_FILE_CONTENT
