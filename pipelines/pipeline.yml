@@ -30,8 +30,10 @@ jobs:
       - task: shell-task
         file: git-rokas-test/tasks/workers.yml
         params: 
-          concourse_user_secret: ((concourse_local_password))
           concourse_url: https://concourse.at.sky
+          concourse_user_secret: ((concourse_local_password))
+          access_key_id: ((concourse_dr_aws_access_key_id))
+          secret_access_key: ((concourse_dr_aws_secret_access_key))
 
         on_success:
           put: notify
