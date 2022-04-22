@@ -39,16 +39,18 @@ jq '.[] | select(.state == "retiring") | .name' workers.json > retiring.txt
 if [ -s retiring.txt ]; then
     echo "Workers stuck in 'retiring'"
     for worker in $(cat retiring.txt) ; do
+
         /usr/local/bin/fly -t main prune-worker --worker $worker >> file.txt
 
-        aws ec2 describe-instance-id --filters "Name=private-ip-address,Values=$(echo $worker | tr -d 'aws-')" | jq -r .Reservations[0].Instances[0].InstanceId >> ec2.txt
-        
-        for ec2 in $(cat ec2.txt) ; do
-        aws ec2 terminate-instances --instance-ids $ec2 >> terminated.txt
-        cat terminated.txt
-        done
+        aws ec2 describe-instances --filters "Name=private-ip-address,Values=$(echo $worker | tr -d 'aws-')" | jq -r .Reservations[0].Instances[0].InstanceId >> ec2.txt
+         
     done
+    for ec2 in $(cat ec2.txt) ; do
 
+        aws ec2 terminate-instances --instance-ids $ec2 >> terminated.txt
+
+        cat terminated.txt
+    done
 else
     echo "All workers are running" 
     touch prune-info/pruned.txt
