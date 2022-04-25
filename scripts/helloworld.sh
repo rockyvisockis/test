@@ -7,8 +7,6 @@ DEBIAN_FRONTEND=noninteractive apt-get -qq install curl -y > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get -qq install awscli -y > /dev/null 
 apt-get -qq install jq -y > /dev/null 2>&1
 
-
-
 export DOWNLOADLINK="$concourse_url/api/v1/cli"
 export AWS_ACCESS_KEY_ID="$access_key_id"
 export AWS_SECRET_ACCESS_KEY="$secret_access_key"
@@ -42,7 +40,7 @@ if [ -s retiring.txt ]; then
 
         /usr/local/bin/fly -t main prune-worker --worker $worker >> file.txt
 
-        aws ec2 describe-instances --filters "Name=private-ip-address,Values=$(echo $worker | tr -d 'aws-')" | jq -r .Reservations[0].Instances[0].InstanceId >> ec2.txt
+        aws ec2 describe-instances --filters "Name=private-ip-address,Values=$(echo $worker | tr -d 'aws-'), Name=instance-state-name,Values=running" | jq -r .Reservations[0].Instances[0].InstanceId >> ec2.txt
          
     done
     for ec2 in $(cat ec2.txt) ; do
