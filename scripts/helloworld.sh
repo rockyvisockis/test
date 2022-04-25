@@ -4,7 +4,7 @@
 apt-get -qq update 
 DEBIAN_FRONTEND=noninteractive apt-get -qq install apt-utils -y > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get -qq install curl -y > /dev/null 2>&1
-DEBIAN_FRONTEND=noninteractive apt-get -qq install awscli -y > /dev/null 2>&1
+DEBIAN_FRONTEND=noninteractive apt-get -qq install awscli -y > /dev/null 
 apt-get -qq install jq -y > /dev/null 2>&1
 
 
