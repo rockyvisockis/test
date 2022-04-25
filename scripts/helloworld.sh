@@ -40,7 +40,7 @@ if [ -s retiring.txt ]; then
 
         /usr/local/bin/fly -t main prune-worker --worker $worker >> file.txt
 
-        aws ec2 describe-instances --filters "Name=private-ip-address,Values=$(echo $worker | tr -d 'aws-'), Name=instance-state-name,Values=running" | jq -r .Reservations[0].Instances[0].InstanceId >> ec2.txt
+        aws ec2 describe-instances --filters "Name=private-ip-address,Values=$(echo $worker | tr -d 'aws-')" Name=instance-state-name,Values=running | jq -r .Reservations[0].Instances[0].InstanceId >> ec2.txt
          
     done
     for ec2 in $(cat ec2.txt) ; do
