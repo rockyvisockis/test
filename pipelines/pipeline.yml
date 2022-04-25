@@ -19,7 +19,8 @@ resources:
     type: time
     icon: clock-outline
     source:
-      interval: 60m
+      interval: 1h
+    check_every: 1h
 
 jobs:
   - name: check_workers
