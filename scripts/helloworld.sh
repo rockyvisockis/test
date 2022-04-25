@@ -10,7 +10,7 @@ apt-get -qq install jq -y > /dev/null 2>&1
 export DOWNLOADLINK="$concourse_url/api/v1/cli"
 export AWS_ACCESS_KEY_ID="$access_key_id"
 export AWS_SECRET_ACCESS_KEY="$secret_access_key"
-export AWS_DEFAULT_REGION="eu-west-1"
+export AWS_DEFAULT_REGION="$aws_default_region"
 
 aws --version
 # Download and install fly cli

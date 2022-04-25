@@ -35,7 +35,7 @@ jobs:
           concourse_user_secret: ((concourse_local_password))
           access_key_id: ((concourse_prod_aws_access_key_id))
           secret_access_key: ((concourse_prod_aws_secret_access_key))
-
+          aws_default_region: eu-west-1
         on_success:
           put: notify
           params: 
