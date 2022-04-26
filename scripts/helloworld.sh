@@ -44,10 +44,15 @@ if [ -s retiring.txt ]; then
          
     done
     for ec2 in $(cat ec2.txt) ; do
+        if [ -s ec2.txt ]; then
 
-        aws ec2 terminate-instances --instance-ids $ec2 >> terminated.txt
+            aws ec2 terminate-instances --instance-ids $ec2 >> terminated.txt
 
-        cat terminated.txt
+            cat terminated.txt
+
+        else
+            echo "No ec2 instances to terminte."
+        fi
     done
 else
     echo "All workers are running" 
